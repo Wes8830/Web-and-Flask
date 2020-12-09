@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>FAQ</title>
+    </head>
+    <body>
+        <nav class="nav justify-content-center">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="services.html">Tech Services</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link active" href="faq.html">FAQ</a>
+        </nav>
+
+        <h1>Search hockeydb.com using Forms.</h1>
+
+        <form action="https://www.hockeydb.com/ihdb/stats/find_player.php" method="get">
+            <input name="full_name" type = "text">
+            <input type ="submit" value="Search">
+        </form>
+
+        <form action="https://www.hockeydb.com/ihdb/stats/find_player.php" method="get">
+            <div class="form-group">
+                <lable for="Player Entry">Player Name</lable>
+                <small id="Enter-Player-Name" class="form-text text-muted">Enter Player Name</small>
+                <input name="full_name" type="text" class="form-control" id="player-entry" aria-describedby="Enter-Player-Name">
+                <div id="buttonalign"><button type="submit" class="btn btn-primary">Submit</button></div>
+            </div>
+        </form>
+    </body>
+</html>
