@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Navigation</title>
+    </head>
+    <body>
+        <nav class="nav justify-content-center">
+            <a class="nav-link active" href="index.html">Home</a>
+            <a class="nav-link" href="services.html">Tech Services</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="faq.html">FAQ</a>
+        </nav>
+        <h1><b>Hello, Wes</b></h1>
+        <h2>Latest Updates:</h2>
+        <p>Built basic framework for website with Nav bar</p>
+        <select>
+            <option value ="large"> Large Text</option>
+            <option value ="initial" selected> Medium Text</option>
+            <option value ="small"> Small Text</option>
+        </select>
+        <script>
+            document.querySelector('select').onchange = function()  {
+                document.querySelector('p').style.fontSize = this.value;
+            }
+        </script>
+
+    </body>
+</html>
