@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="content-header">
+        <h1>story page: <b><span>{{ project_name }}</span></b></h1>
+        <br>
+    </div>
+    <table class="table center table-hover table-light">
+        <h3>In Progress</h3>
+        <thead class="thead-dark">
+            <th>Stories Underway</th>
+            <th>Project ID</th>
+            <th>T Shirt Size</th>
+            <th>Category ID</th>
+            <th>Status</th>
+            <th>Action</th>
+        </thead>
+        <thead>
+            <td><b>Totals</b></td>
+            <td></td>
+            <td><b>{{ totalSize }} Hours</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </thead>
+        {% for row in stories_inprog %}
+            <tr>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.story }}</a></td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.storyid }}</a></td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.tshirtsize }} Hours</td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.status }}</td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.date }}</td>
+                <!-- Create Buttons for Edit and Delete Actions -->
+                <td>
+                    <a href="/update/{{ row.storyid }}" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    <a href="/delete/{{ row.storyid }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <br>
+    <table class="table center table-hover table-light">
+        <h3>To Do</h3>
+        <thead class="thead-dark">
+            <th>Story Name</th>
+            <th>Project ID</th>
+            <th>T Shirt Size</th>
+            <th>Category ID</th>
+            <th>Status</th>
+            <th>Action</th>
+        </thead>
+        <thead>
+            <td><b>Totals</b></td>
+            <td></td>
+            <td><b>{{ totalSize }} Hours</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </thead>
+        {% for row in stories_todo %}
+            <tr>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.story }}</a></td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.storyid }}</a></td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.tshirtsize }} Hours</td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.status }}</td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.date }}</td>
+                <!-- Create Buttons for Edit and Delete Actions -->
+                <td>
+                    <a href="/update/{{ row.storyid }}" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    <a href="/delete/{{ row.storyid }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <br>
+    <table class="table center table-hover table-light">
+        <h3>Done</h3>
+        <thead class="thead-dark">
+            <th>Completed Stories</th>
+            <th>Story ID</th>
+            <th>T Shirt Size</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+        </thead>
+        {% for row in stories_done %}
+            <tr>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.story }}</a></td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.storyid }}</a></td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.tshirtsize }} Hours</td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.status }}</td>
+                <td><a href='/stories/{{ row.projectid }}'>{{ row.date }}</td>
+                <!-- Create Buttons for Edit and Delete Actions -->
+                <td>
+                    <a href="/update/{{ row.storyid }}" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    <a href="/delete/{{ row.storyid }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <!-- project_id is inherited by the last time we selected a category item, it gets passed down into this form so that we can update the appropriate parent category-->
+    <form action="/stories/{{ projectid }}" method="POST">
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" name="story" placeholder="enter a new project" type="text">
+            <br>
+            <input autocomplete="off" class="form-control" name="tshirtsize" placeholder="enter t-shirt size" type="text">
+            <br>
+            <button class="btn btn-primary" type="submit">Add Story</button>
+        </div>
+    </form>
+
+{% endblock %}

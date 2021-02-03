@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="content-header">
+        <h1><b>Update Record</b></h1>
+    </div>
+
+    <!-- project_id is inherited from the item we choose to 'Update', it gets passed down into this form so that we can update the appropriate parent category-->
+
+    <!--Use Jinja 'if' blocks to condition on request.path  -->
+    <form action="/update/{{ update_record.projectid }}" method="POST">
+        <div class="form-group">
+            <label for="project">Project Name:</label>
+            <input autocomplete="off" class="form-control" name="project" value="{{ update_record.project }}" type="text">
+
+            <label for="tshirtsize">T Shirt Size:</label>
+            <input autocomplete="off" class="form-control" name="tshirtsize" value="{{ update_record.tshirtsize }}" type="text">
+
+            <label for="categoryid">Cateogory ID (TODO: update this to be Cat Name):</label>
+            <input autocomplete="off" class="form-control" name="categoryid" value="{{ update_record.categoryid }}" type="text">
+
+            <label for="status">Status:</label>
+            <input autocomplete="on" autofocus class="form-control" name="status" value="{{ update_record.status }}" type="text">
+
+            <button class="btn btn-primary" type="submit">Update Project</button>
+
+            <!-- Allow user to reset should they forget the original values-->
+            <button class="btn btn-secondary" type="reset">Reset</button>
+        </div>
+    </form>
+
+{% endblock %}

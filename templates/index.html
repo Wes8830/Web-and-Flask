@@ -1,24 +1,53 @@
 {% extends "layout.html" %}
 
-{% block body %}
-    <h1><b>Hello, Wes!</b></h1>
-    <h2>Latest Updates:</h2>
-    <p>Built basic framework for website with Nav bar</p>
-    <select>
-        <option value ="large"> Large Text</option>
-        <option value ="initial" selected> Medium Text</option>
-        <option value ="small"> Small Text</option>
-    </select>
+{% block content %}
     <script>
-        document.querySelector('select').onchange = function()  {
-            document.querySelector('p').style.fontSize = this.value;
+        function switch()
+        {
+            let selected = document.querySelector('#selected');
+            return selected;
         }
     </script>
+    <div class="content-header">
+        <h1>project categories: <b><span>ALL</span></b></h1>
+    </div>
+    <!--<form action="/" method="post">
+        <div class="form-group">
+            <select name="selected" id="selected">
+                <option value = {{ categories }}> Category View</option>
+                <option value = {{ projects }}> Project View</option>
+                <option value ="Story"> Story View</option>
+                <option value ="Task"> Task View</option>
+                <option value ="Sub Task"> Sub Task View</option>
+            </select>
+        </div>
+    </form>-->
+    <table class="table center table-hover table-light">
+        <thead class="thead-dark">
+            <th>Name</th>
+            <th>Category ID</th>
+            <th>Product</th>
+            <th>Date Created</th>
+        </thead>
+        {% for row in categories %}
+            <tr>
+                <td><a href="#">{{ row.category }}</a></td>
+                <td><a href="#">{{ row.categoryid }}</a></td>
+                <td><a href="#">{{ row.product }}</a></td>
+                <td><a href="#">{{ row.date }}</a></td>
 
-    <ul>
-        {% for row in rows %}
-            <li>{{ row }}</li>
+                <!--TODO: add Edit and ARCHIVE-->
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
+
+
+    <form action="/" method="post">
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" name="category" placeholder="enter a new category" type="text">
+            <br>
+            <button class="btn btn-primary" type="submit">Add Category</button>
+        </div>
+    </form>
 
 {% endblock %}

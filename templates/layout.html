@@ -2,19 +2,53 @@
 
 <html lang="en">
         <head>
-            <link href="styles.css" rel="stylesheet">
+            <meta charset="utf-8">
+            <title>Product: ROADMAP</title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
             <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
             <title>Layout for Web</title>
         </head>
         <body>
-            <nav class="nav justify-content-center">
-                <a class="nav-link active" href="/">Home</a>
-                <a class="nav-link" href="/services">Tech Services</a>
-                <a class="nav-link" href="/about">About</a>
-                <a class="nav-link" href="/faq">FAQ</a>
-            </nav>
-            {% block body %}
-            {% endblock %}
+            <header>
+                <nav class="navbar navbar-expand-lg">
+                    <!-- Figure a way to switch the Active tag to True/False -->
+                    <div class="container-fluid">
+                        <a class="navbar-brand">product: <b><span>ROADMAP</span></b></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <!--Specify, using Flask tags, what the Active request.path is so that  you can toggle the Active tag in the nav bar -->
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.path == '/about' %}active{% endif %}" href="/about">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <!-- Side Bar Start-->
+            <div class="sidebar">
+                <center>
+                    <img src="{{url_for('static', filename='me.png')}}" class="profile_image" alt="">
+                    <h4>Categories</h4>
+                </center>
+                {% for row in categories %}
+                <!-- on href click, render a GET request to content.html passing the name of the category -->
+                <a href='/project/{{ row.categoryid }}'>{{ row.category }}</a>
+                {% endfor %}
+            </div>
+                <div class="content">
+                    <!--This is the middle sction of your page
+                        You'll load all HTML pages associated with each Category here-->
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            <!--Side Bar End-->
 
         </body>
 </html>
