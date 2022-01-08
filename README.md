@@ -6,7 +6,7 @@ Final Project for CS50x 2020
 
 | Title            | Author                |    Year   |    City     |      State      |        Country      |
 | ---------------- | :-------------------: | :-------: | :---------: | :-------------: | :-----------------: |
-| product: ROADMAP | Wesley L. Vesprini    |    2020   |  Brookline  |  Massachusetts  |     United States   |
+| product: ROADMAP | Wesley  |    2020   |   |    |       |
 
 
 The application allows users to keep track of projects and project entities that are in the development pipeline. Each project entity's development time can be to estimated and kept track of, while providing a granular look through into each To Do item depending on what level of detail is required by the user at that time:
